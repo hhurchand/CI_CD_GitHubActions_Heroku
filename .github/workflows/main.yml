@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  run:
+  continuous-integration:
     runs-on: [ubuntu-latest]
  
     steps:
@@ -25,7 +25,7 @@ jobs:
           pip3 install -r requirements.txt
           python codepython.py
 
-  build:
+  continuous-deployment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
