@@ -26,6 +26,7 @@ jobs:
           python codepython.py
 
   continuous-deployment:
+    needs: continuous-integration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
