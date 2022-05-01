@@ -6,6 +6,25 @@ on:
       - master
 
 jobs:
+  run:
+    runs-on: [ubuntu-latest]
+ 
+    steps:
+      - uses: actions/checkout@v2
+ 
+      - uses: iterative/setup-cml@v1
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+ 
+      - name: cml
+        env:
+          REPO_TOKEN: ${{ secrets.CI_CD_BOSTON_TOKEN }}
+        run: |
+          pip3 install -r requirements.txt
+          python codepython.py
+
   build:
     runs-on: ubuntu-latest
     steps:
