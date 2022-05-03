@@ -9,6 +9,14 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+##
+import mlflow
+import mlflow.sklearn
+
+
+import logging
+logging.basicConfig(level=logging.WARN)
+logger = logging.getLogger(__name__)
 # %matplotlib inline
 
 # lire le fichier de données
@@ -166,6 +174,10 @@ cv_scores = cross_val_score(lm, X_train, y_train, scoring='r2', cv=10)
 print(cv_scores)
 #calcul du scores
 print(np.round(np.mean(cv_scores), 2))
+
+with mlflow.start_run():
+    mlflow.log_param("RMSE",r2)
+    mlflow.log_param("CV_scores",cv_scores)
 
 """On voit que le score sous cross validation est legerement mieux qu'avec les 3 predicteurs"""
 
