@@ -109,7 +109,7 @@ print(np.round(np.mean(cv_scores), 2))
 """
 
 from sklearn.feature_selection import SelectKBest, f_regression
-model =SelectKBest(score_func = f_regression, k = 4)# tous les descripteurs pour k
+model =SelectKBest(score_func = f_regression, k = 3)# tous les descripteurs pour k
 resultats = model.fit(X_train, y_train)
 
 print(resultats.scores_)
